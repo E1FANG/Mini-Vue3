@@ -22,6 +22,11 @@ describe("effect", ()=>{
   })
 
   it("scheduler", () => {
+    // 1. 通过effect的第二个参数  给定的一个 scheduler 的 fn
+    // 2. effect第一次执行的时候，还会执行fn
+    // 3. 当响应式对象 set update ， 不会执行 fn 而是执行scheduler
+    // 4. 如果说 当执行runner的时候，会再次执行 fn
+  
     let dummy;
     let run: any;
     const scheduler = jest.fn(() => {
