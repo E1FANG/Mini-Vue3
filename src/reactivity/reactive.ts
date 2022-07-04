@@ -16,3 +16,16 @@ export function reactive(row){
   }
   return new Proxy(row,handler)
 }
+
+export function readonly(row){
+  const handler = {
+    get(target,key){
+      const res = Reflect.get(target,key)
+      return  res
+    },
+    set(){
+      return true
+    }
+  }
+  return new Proxy(row,handler)
+}
