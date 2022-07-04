@@ -41,6 +41,7 @@ export function track(target, key) {
   if (!dep) {
     depsMap.set(key, dep = new Set())
   }
+  if(!activeEffect) return
   dep.add(activeEffect)
   activeEffect.deps.push(dep)
 }
