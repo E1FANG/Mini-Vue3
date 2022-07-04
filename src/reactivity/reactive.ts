@@ -14,16 +14,19 @@ function createGetter(isReadonly=false) {
   }
 }
 
+function createSetter(){
+  return function set(target, key, value) {
+    const res = Reflect.set(target, key, value)
+    trigger(target, key)
+    return res
+  }
+}
 
 
 export function reactive(row) {
   const handler = {
     get:createGetter(),
-    set(target, key, value) {
-      const res = Reflect.set(target, key, value)
-      trigger(target, key)
-      return res
-    }
+    set:createSetter()
   }
   return new Proxy(row, handler)
 }
@@ -32,6 +35,7 @@ export function readonly(row) {
   const handler = {
     get:createGetter(true),
     set() {
+      // 给出一个警告
       return true
     }
   }
