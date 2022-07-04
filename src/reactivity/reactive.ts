@@ -4,14 +4,14 @@ import { track, trigger } from "./effect"
 export function reactive(row){
   const handler = {
     get(target,key){
-      // TODO track
+      const res = Reflect.get(target,key)
       track(target,key)
-      return  Reflect.get(target,key)
+      return  res
     },
     set(target,key,value){
-      // TODO trigger
+      const res = Reflect.set(target,key,value)
       trigger(target,key)
-      return Reflect.set(target,key,value)
+      return res
     }
   }
   return new Proxy(row,handler)
