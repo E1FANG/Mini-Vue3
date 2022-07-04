@@ -1,31 +1,39 @@
 import { track, trigger } from "./effect"
 
 
-export function reactive(row){
+// 高阶函数
+function createGetter(isReadonly=false) {
+  return function get(target, key) {
+    const res = Reflect.get(target, key)
+
+    if (!isReadonly) {
+      track(target, key)
+    }
+
+    return res
+  }
+}
+
+
+
+export function reactive(row) {
   const handler = {
-    get(target,key){
-      const res = Reflect.get(target,key)
-      track(target,key)
-      return  res
-    },
-    set(target,key,value){
-      const res = Reflect.set(target,key,value)
-      trigger(target,key)
+    get:createGetter(),
+    set(target, key, value) {
+      const res = Reflect.set(target, key, value)
+      trigger(target, key)
       return res
     }
   }
-  return new Proxy(row,handler)
+  return new Proxy(row, handler)
 }
 
-export function readonly(row){
+export function readonly(row) {
   const handler = {
-    get(target,key){
-      const res = Reflect.get(target,key)
-      return  res
-    },
-    set(){
+    get:createGetter(true),
+    set() {
       return true
     }
   }
-  return new Proxy(row,handler)
+  return new Proxy(row, handler)
 }
