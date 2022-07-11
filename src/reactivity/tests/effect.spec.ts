@@ -62,7 +62,12 @@ describe("effect", ()=>{
     expect(dummy).toBe(2)
 
     stop(runner)
-    obj.foo = 3
+    // obj.foo = 3 // 只触发了set
+    obj.foo ++
+    // obj.foo ++  相当于obj.foo = obj.foo + 1 就是触发了get和set
+    // 当触发了get之后，又会重新收集依赖，在后续的set里，又通知了effect执行，所以stop失效了。
+    // 所以需要在触发依赖收集的地方，判断一下，stop
+
     expect(dummy).toBe(2)
 
     runner()
