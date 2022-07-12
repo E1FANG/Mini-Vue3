@@ -16,6 +16,7 @@ class RefImpl {
   // ref 的依赖只需要收集到dep里就可以了
   public dep
   private _rawValue: any
+  public __v_isRef = true
   constructor(value) {
     this._rawValue = value
     // ref 需要是响应式的
@@ -62,4 +63,18 @@ function trackRefValue(ref) {
 
 export function ref(value) {
   return new RefImpl(value)
+}
+
+  // isRef 判断响应式对象是不是一个ref类型
+  // unRef 返回ref.value
+
+export function isRef(ref){
+  return !!ref.__v_isRef
+}
+
+export function unRef(ref){
+  // 看看是不是一个ref对象  ref -> ref.value
+  //  不是的话 直接返回ref
+  return isRef(ref) ? ref.value : ref
+
 }
