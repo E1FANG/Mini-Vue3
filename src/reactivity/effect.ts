@@ -44,6 +44,7 @@ function cleanupEffect(effect) {
 }
 
 const targetMap = new WeakMap()
+
 export function track(target, key) {
   if(!isTracking()) return
 
