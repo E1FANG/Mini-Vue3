@@ -1,6 +1,6 @@
 import { effect } from "../effect"
 import { reactive } from "../reactive"
-import { ref,isRef,unRef } from "../ref"
+import { ref,isRef,unRef,proxyRefs } from "../ref"
 
 describe("ref", ()=>{
   it("happy path",()=>{
@@ -59,5 +59,28 @@ describe("ref", ()=>{
     const a = ref(1)
     expect(unRef(a)).toBe(1)
     expect(unRef(1)).toBe(1)
+  })
+
+  // 不需要 .value也可以直接拿到ref的值 使用场景就是template ，template里面使用ref是可以不需要.value的
+  it("proxyRefs", ()=>{
+    const user = {
+      age:ref(10),
+      name:'marco'
+    }
+
+    const proxyUser = proxyRefs(user)
+
+    expect(user.age.value).toBe(10)
+    expect(proxyUser.age).toBe(10)
+    expect(proxyUser.name).toBe('marco')
+
+    proxyUser.age = 20
+    expect(proxyUser.age).toBe(20)
+    // 改值的话，是会影响到最初的对象的
+    expect(user.age.value).toBe(20)
+
+    proxyUser.age = ref(10)
+    expect(proxyUser.age).toBe(10)
+    expect(user.age.value).toBe(10)
   })
 })

@@ -7,7 +7,7 @@ import { reactive } from "./reactive"
 如何知道这些值被get或者set了呢？
 利用proxy已经不行了，因为proxy只针对对象，现在是一个值类型
 所以需要用一个对象{} RefImpl类来进行包裹，在这个类里面有一个value，就可以对这个value写 get和set的拦截(依赖收集，触发依赖)
-*/ 
+*/
 
 
 // impl 接口
@@ -65,16 +65,35 @@ export function ref(value) {
   return new RefImpl(value)
 }
 
-  // isRef 判断响应式对象是不是一个ref类型
-  // unRef 返回ref.value
+// isRef 判断响应式对象是不是一个ref类型
+// unRef 返回ref.value
 
-export function isRef(ref){
+export function isRef(ref) {
   return !!ref.__v_isRef
 }
 
-export function unRef(ref){
+export function unRef(ref) {
   // 看看是不是一个ref对象  ref -> ref.value
   //  不是的话 直接返回ref
   return isRef(ref) ? ref.value : ref
+}
 
+export function proxyRefs(objectWithRef) {
+  // get set
+  return new Proxy(objectWithRef, {
+    get(target, key) {
+      // 如果是一个ref 就直接返回.value
+      // 如果不是一个ref，就返回它的值
+      return unRef(Reflect.get(target, key))
+    },
+    set(target, key, value) {
+      // 正常情况是要直接替换的
+      // 特殊的是，当当前的值是ref且传入的新值不是ref时。不能直接替换，否则会还是要.value
+      if (isRef(target[key]) && !isRef(value)) {
+        return target[key].value = value
+      } else {
+        return Reflect.set(target, key, value)
+      }
+    }
+  })
 }
