@@ -10,6 +10,7 @@ const shallowReadonlyGet = createGetter(true,true)
 
 // 高阶函数
 function createGetter(isReadonly=false,shallow = false) {
+  
   return function get(target, key) {
     
     if(key === ReactiveFlags.IS_REACTIVE){

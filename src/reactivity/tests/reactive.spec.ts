@@ -1,4 +1,4 @@
-import {reactive,isReactive} from '../reactive'
+import {reactive,isReactive,isProxy} from '../reactive'
 
 describe("reactive",()=>{
   it('happy path',()=>{
@@ -13,6 +13,8 @@ describe("reactive",()=>{
     
     // 当对象不是响应式对象时，应该返回false
     expect(isReactive(original)).toBe(false)
+
+    expect(isProxy(observed)).toBe(true)
   })
 
   // reactive 对象嵌套
