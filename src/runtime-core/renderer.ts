@@ -7,6 +7,8 @@ export function render(vnode,container){
 }
 
 function patch(vnode,container){
+  // 处理element
+  // processElement()
 
   // 去处理组件
   processComponent(vnode , container)

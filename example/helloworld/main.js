@@ -1,5 +1,8 @@
 // vue3
 
-// const { createApp } = require("vue");
+import {createApp} from "../../lib/guide-mini-vue.esm.js";
+import { App } from "./App.js";
 
-createApp(app).mount('#app')
+const rootContainer = document.querySelector('#app')
+
+createApp(App).mount(rootContainer)

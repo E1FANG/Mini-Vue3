@@ -43,7 +43,7 @@ function finishComponentSetup(instance){
   // 判断当前组件有无对应的render
   const Component = instance.type
   
-  if(Component.render){
+  // if(Component.render){
     instance.render = Component.render
-  }
+  // }
 }
