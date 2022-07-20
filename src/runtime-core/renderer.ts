@@ -8,6 +8,7 @@ export function render(vnode, container) {
 }
 
 function patch(vnode, container) {
+  debugger
   // 处理element
   if (typeof vnode.type === 'string') {
     processElement(vnode,container)
