@@ -8,6 +8,7 @@ export function createApp(rootComponent){
       // component -> vNode
       // 后续的所有逻辑操作，都会基于 vNode虚拟节点 做处理
       const vnode = createVNode(rootComponent)
+      
 
       render(vnode,rootContainer)
     }
