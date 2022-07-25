@@ -16,7 +16,6 @@ function patch(vnode, container) {
     // 去处理组件
     processComponent(vnode, container)
   }
-  debugger
 }
 
 function processElement(vnode: any, container: any) {
@@ -39,9 +38,15 @@ function mountElement(vnode: any, container: any) {
   }
   // props
   const {  props } = vnode
+  const isOn = (key:string)=> /^on[A-Z]/.test(key)
   for (const key in props) {
     const val = props[key]
+    if(isOn(key)){
+      const event = key.slice(2).toLocaleLowerCase()
+      el.addEventListener(event,val)
+    }else{
     el.setAttribute(key, val)
+    }
   }
   container.append(el)
 }
