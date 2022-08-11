@@ -6,6 +6,7 @@ export const App = {
     return h("div",{},[
       h("div", {}, "app"),
       h(Foo, {
+        count:1,
         onAdd(a,b){
           // on + Event
           console.log("onAdd",a,b);

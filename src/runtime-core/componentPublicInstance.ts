@@ -14,6 +14,7 @@ export const PublicInstanceProxyHandlers = {
       return setupState[key]
     }
 
+    // 访问this属性，先检查state上的再检查props
     if(hasOwn(setupState,key)){
       return setupState[key]
     }else if(hasOwn(props,key)){
