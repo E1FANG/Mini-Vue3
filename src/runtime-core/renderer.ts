@@ -72,6 +72,7 @@ function mountComponent(initialVNode, container) {
 function setupRenderEffect(instance, initialVNode, container) {
   // subTree 虚拟节点树
   const { proxy } = instance
+
   // 绑定了render的this指向是proxy，那么在render里面就可以用this访问setup等数据了
   const subTree = instance.render.call(proxy)
 
