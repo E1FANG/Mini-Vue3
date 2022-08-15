@@ -1,5 +1,6 @@
 import { ShapeFlags } from "../shared/ShapeFlags"
 import { createComponentInstance, setUpComponent } from "./component"
+import { Fragment, Text } from "./vnode"
 
 export function render(vnode, container) {
   // patch 
@@ -8,26 +9,46 @@ export function render(vnode, container) {
 }
 
 function patch(vnode, container) {
-  // 处理element
-  const {shapeFlag} = vnode
-  if (shapeFlag & ShapeFlags.ELEMENT) {
-    processElement(vnode, container)
-  } else if (shapeFlag & ShapeFlags.STATEFUL_COMPONENT) {
-    // 去处理组件
-    processComponent(vnode, container)
+
+  const { type, shapeFlag } = vnode
+  switch (type) {
+    case Fragment:
+      mountChildren(vnode, container)
+      break;
+
+    case Text:
+      processText(vnode, container)
+      break
+
+    default:
+      if (shapeFlag & ShapeFlags.ELEMENT) {
+        // 处理element
+        processElement(vnode, container)
+      } else if (shapeFlag & ShapeFlags.STATEFUL_COMPONENT) {
+        // 去处理组件
+        processComponent(vnode, container)
+      }
+      break;
   }
 }
+
+function processText(vnode,container){
+  const {children} = vnode
+  const textNode = vnode.el =  document.createTextNode(children)
+  container.append(textNode)
+}
+
 
 function processElement(vnode: any, container: any) {
   mountElement(vnode, container)
 }
 
 function mountElement(vnode: any, container: any) {
- 
+
   const el = (vnode.el = document.createElement(vnode.type))
 
   // children
-  const {  shapeFlag,children } = vnode
+  const { shapeFlag, children } = vnode
   if (shapeFlag & ShapeFlags.TEXT_CHILDREN) {
     el.textContent = children
   } else if (shapeFlag & ShapeFlags.ARRAY_CHILDREN) {
@@ -37,15 +58,15 @@ function mountElement(vnode: any, container: any) {
     mountChildren(vnode, el)
   }
   // props
-  const {  props } = vnode
-  const isOn = (key:string)=> /^on[A-Z]/.test(key)
+  const { props } = vnode
+  const isOn = (key: string) => /^on[A-Z]/.test(key)
   for (const key in props) {
     const val = props[key]
-    if(isOn(key)){
+    if (isOn(key)) {
       const event = key.slice(2).toLocaleLowerCase()
-      el.addEventListener(event,val)
-    }else{
-    el.setAttribute(key, val)
+      el.addEventListener(event, val)
+    } else {
+      el.setAttribute(key, val)
     }
   }
   container.append(el)

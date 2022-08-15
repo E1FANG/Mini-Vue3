@@ -1,4 +1,4 @@
-import { createVNode } from "../vnode";
+import { createVNode, Fragment } from "../vnode";
 
 export function renderSlots(slots,name,props){
   // 该函数解决当slots是一个数组的时候，无法渲染的问题
@@ -6,8 +6,7 @@ export function renderSlots(slots,name,props){
   const slot = slots[name]
   if(slot){
     if(typeof slot === 'function'){
-      return createVNode('div',{},slot(props))
+      return createVNode(Fragment,{},slot(props))
     }
-    return createVNode('div',{},slot)
   }
 }
