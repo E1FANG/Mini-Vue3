@@ -9,20 +9,20 @@ export function createComponentInstance(vnode) {
     vnode,
     type: vnode.type,
     setupState: {},
-    props:{},
-    slots:{},
-    emit:()=>{}
+    props: {},
+    slots: {},
+    emit: () => { }
   };
 
-  component.emit= emit.bind(null,component) as any
+  component.emit = emit.bind(null, component) as any
 
   return component
 }
 
 export function setUpComponent(instance) {
   // TODO
-  initProps(instance,instance.vnode.props)
-  initSlots(instance,instance.vnode.children)
+  initProps(instance, instance.vnode.props)
+  initSlots(instance, instance.vnode.children)
 
   setupStatefulComponent(instance)
 }
@@ -32,17 +32,20 @@ export function setupStatefulComponent(instance) {
   // 利用proxy，代理所有的需要在组件内部访问的东西。
   // 比如说 setup返回的东西
   // this.$el访问组件根节点
-  instance.proxy = new Proxy({_:instance},PublicInstanceProxyHandlers)
+  instance.proxy = new Proxy({ _: instance }, PublicInstanceProxyHandlers)
   const { setup } = Component
   if (setup) {
+    setCurrentInstance(instance)
     // setup会返回function 或者 object
     // 如果是function 就会认为是个render 函数
     // 如果是object，就会把这个object注入当前的组件当中
-    const setupResult = setup(shallowReadonly(instance.props),{
-      emit:instance.emit
+    const setupResult = setup(shallowReadonly(instance.props), {
+      emit: instance.emit
     })
 
-  handleSetupResult(instance, setupResult)
+    setCurrentInstance(null)
+
+    handleSetupResult(instance, setupResult)
   }
 
 }
@@ -65,4 +68,14 @@ function finishComponentSetup(instance) {
   // if(Component.render){
   instance.render = Component.render
   // }
+}
+
+let currentInstance = null
+
+export function getCurrentInstance() {
+  return currentInstance
+}
+
+export function setCurrentInstance(instance){
+  currentInstance = instance
 }
