@@ -52,7 +52,8 @@ const Consumer = {
 
 export default {
   name: "App",
-  setup() {},
+  setup() {
+  },
   render() {
     return h("div", {}, [h("p", {}, "apiInject"), h(Provider)]);
   },
