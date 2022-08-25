@@ -5,7 +5,11 @@ import { Fragment, Text } from "./vnode"
 
 export function createRenderer(options) {
 
-  const { createElement, patchProp, insert } = options
+  const { 
+    createElement:hostCreateElement, 
+    patchProp:hostPatchProp, 
+    insert:hostInsert
+   } = options
 
   function render(vnode, container) {
     // patch 
@@ -55,7 +59,7 @@ export function createRenderer(options) {
 
     // createElement new Element()
     // const el = (vnode.el = document.createElement(vnode.type))
-    const el = (vnode.el = createElement(vnode.type))
+    const el = (vnode.el = hostCreateElement(vnode.type))
 
     // children
     const { shapeFlag, children } = vnode
@@ -72,10 +76,10 @@ export function createRenderer(options) {
     const { props } = vnode
     for (const key in props) {
       const val = props[key]
-      patchProp(el,key,val)
+      hostPatchProp(el,key,val)
     }
     // insert
-    insert(el,container)
+    hostInsert(el,container)
   }
 
   function mountChildren(vnode, container, parentComponent) {
