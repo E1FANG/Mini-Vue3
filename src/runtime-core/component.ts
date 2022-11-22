@@ -1,83 +1,85 @@
+import { proxyRefs } from "../reactivity";
 import { shallowReadonly } from "../reactivity/reactive";
 import { emit } from "./componentEmit";
 import { initProps } from "./componentProps";
 import { PublicInstanceProxyHandlers } from "./componentPublicInstance";
 import { initSlots } from "./componentSlots";
 
-export function createComponentInstance(vnode,parent) {
+export function createComponentInstance(vnode, parent) {
   const component = {
     vnode,
     type: vnode.type,
     setupState: {},
     props: {},
     slots: {},
-    provides:parent?parent.provides : {},
+    provides: parent ? parent.provides : {},
     parent,
-    emit: () => { }
+    isMounted: false,
+    subTree: {},
+    emit: () => {},
   };
 
-  component.emit = emit.bind(null, component) as any
+  component.emit = emit.bind(null, component) as any;
 
-  return component
+  return component;
 }
 
 export function setUpComponent(instance) {
   // TODO
-  initProps(instance, instance.vnode.props)
-  initSlots(instance, instance.vnode.children)
+  initProps(instance, instance.vnode.props);
+  initSlots(instance, instance.vnode.children);
 
-  setupStatefulComponent(instance)
+  setupStatefulComponent(instance);
 }
 
 export function setupStatefulComponent(instance) {
-  const Component = instance.type
+  const Component = instance.type;
   // 利用proxy，代理所有的需要在组件内部访问的东西。
   // 比如说 setup返回的东西
   // this.$el访问组件根节点
-  instance.proxy = new Proxy({ _: instance }, PublicInstanceProxyHandlers)
-  const { setup } = Component
+  instance.proxy = new Proxy({ _: instance }, PublicInstanceProxyHandlers);
+  const { setup } = Component;
   if (setup) {
-    setCurrentInstance(instance)
+    setCurrentInstance(instance);
     // setup会返回function 或者 object
     // 如果是function 就会认为是个render 函数
     // 如果是object，就会把这个object注入当前的组件当中
     const setupResult = setup(shallowReadonly(instance.props), {
-      emit: instance.emit
-    })
+      emit: instance.emit,
+    });
 
-    setCurrentInstance(null)
+    setCurrentInstance(null);
 
-    handleSetupResult(instance, setupResult)
+    handleSetupResult(instance, setupResult);
   }
-
 }
 
 function handleSetupResult(instance, setupResult) {
   // function obj
   // TODO function
-  if (typeof setupResult === 'object') {
-    instance.setupState = setupResult
+  if (typeof setupResult === "object") {
+    instance.setupState = proxyRefs(setupResult);
   }
 
   // 处理：保证组件的render 是有值的
-  finishComponentSetup(instance)
+  finishComponentSetup(instance);
 }
 
 function finishComponentSetup(instance) {
   // 判断当前组件有无对应的render
-  const Component = instance.type
+  const Component = instance.type;
 
   // if(Component.render){
-  instance.render = Component.render
+  instance.render = Component.render;
   // }
 }
 
-let currentInstance = null
+let currentInstance = null;
 
 export function getCurrentInstance() {
-  return currentInstance
+  return currentInstance;
 }
 
-export function setCurrentInstance(instance){
-  currentInstance = instance
+export function setCurrentInstance(instance) {
+  currentInstance = instance;
 }

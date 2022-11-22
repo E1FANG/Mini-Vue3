@@ -1,5 +1,4 @@
-import { shallowReadonly } from "vue"
-import { isReactive, isReadonly } from "../reactive"
+import { isReactive, isReadonly,shallowReadonly } from "../reactive"
 
 describe("shallowReadonly", () =>{
   it("should not make no-reactive properties reactive", ()=>{
