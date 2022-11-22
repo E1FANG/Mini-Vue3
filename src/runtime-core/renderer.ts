@@ -10,6 +10,8 @@ export function createRenderer(options) {
     createElement: hostCreateElement,
     patchProp: hostPatchProp,
     insert: hostInsert,
+    remove: hostRemove,
+    setElementText: hostSetElementText,
   } = options;
 
   function render(vnode, container) {
@@ -51,27 +53,64 @@ export function createRenderer(options) {
   }
 
   function processFragment(n1, n2, container, parentComponent) {
-    mountChildren(n2, container, parentComponent);
+    mountChildren(n2.children, container, parentComponent);
   }
 
   function processElement(n1, n2: any, container: any, parentComponent) {
     if (!n1) {
       mountElement(n2, container, parentComponent);
     } else {
-      patchElement(n1, n2, container);
+      patchElement(n1, n2, container, parentComponent);
     }
   }
 
-  function patchElement(n1, n2, container) {
+  function patchElement(n1, n2, container, parentComponent) {
     console.log("patchElement");
     console.log(n1);
     console.log(n2);
 
-    const el = (n2.el = n1.el);
-
     const oldProps = n1.props || EMPTY_OBj;
     const newProps = n2.props || EMPTY_OBj;
+
+    const el = (n2.el = n1.el);
+
+    patchChildren(n1, n2, container, parentComponent);
     patchProps(el, oldProps, newProps);
+  }
+
+  function patchChildren(n1, n2, container, parentComponent) {
+    const prevShapeFlag = n1.shapeFlag;
+    const c1 = n1.children;
+    const { shapeFlag } = n2;
+    const c2 = n2.children;
+
+    // 新节点为text
+    if (shapeFlag & ShapeFlags.TEXT_CHILDREN) {
+      // 旧节点为array => ArrayToText
+      if (prevShapeFlag & ShapeFlags.ARRAY_CHILDREN) {
+        // 1. 把老的children 清空
+        unMountChildren(n1.children);
+      }
+      // 2. 设置text
+      // 旧节点为text => TextToText
+      // 同样的处理，array的c1是必定不等于text的，ArrayToText一样会处理重新设置text
+      if (c1 !== c2) {
+        hostSetElementText(container, c2);
+      }
+    } else {
+      // 新节点为array
+      if (prevShapeFlag & ShapeFlags.TEXT_CHILDREN) {
+        hostSetElementText(container, "");
+        mountChildren(c2, container, parentComponent);
+      }
+    }
+  }
+
+  function unMountChildren(children) {
+    for (let i = 0; i < children.length; i++) {
+      const el = children[i];
+      hostRemove(el);
+    }
   }
 
   function patchProps(el, oldProps, newProps) {
@@ -109,7 +148,7 @@ export function createRenderer(options) {
       // children.forEach(child=>{
       //   patch(child,el)
       // })
-      mountChildren(vnode, el, parentComponent);
+      mountChildren(vnode.children, el, parentComponent);
     }
     // props
     // patchProp
@@ -122,8 +161,8 @@ export function createRenderer(options) {
     hostInsert(el, container);
   }
 
-  function mountChildren(vnode, container, parentComponent) {
-    vnode.children.forEach((child) => {
+  function mountChildren(children, container, parentComponent) {
+    children.forEach((child) => {
       patch(null, child, container, parentComponent);
     });
   }
