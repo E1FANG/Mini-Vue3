@@ -99,11 +99,42 @@ export function createRenderer(options) {
       }
     } else {
       // 新节点为array
+      // text to array
       if (prevShapeFlag & ShapeFlags.TEXT_CHILDREN) {
         hostSetElementText(container, "");
         mountChildren(c2, container, parentComponent);
+      } else {
+        // array diff array
+        patchKeyChildren(c1, c2, container, parentComponent);
       }
     }
+  }
+
+  function patchKeyChildren(c1, c2, container, parentComponent) {
+    debugger;
+    let i = 0;
+    let e1 = c1.length - 1;
+    let e2 = c2.length - 1;
+
+    // 检测两个节点是否一样
+    function isSomeVNodeType(n1, n2) {
+      // type
+      // key
+      return n1.type === n2.type && n1.key === n2.key;
+    }
+
+    while (i <= e1 && i <= e2) {
+      const n1 = c1[i];
+      const n2 = c2[i];
+      if (isSomeVNodeType(n1, n2)) {
+        // 递归的使用patch，因为isSomeVNodeType只检测了VNode的type和key，可能他们的子元素是不相等的。
+        patch(n1, n2, container, parentComponent);
+      } else {
+        break;
+      }
+      i++;
+    }
+    console.log("i:" + i);
   }
 
   function unMountChildren(children) {
@@ -145,9 +176,6 @@ export function createRenderer(options) {
     if (shapeFlag & ShapeFlags.TEXT_CHILDREN) {
       el.textContent = children;
     } else if (shapeFlag & ShapeFlags.ARRAY_CHILDREN) {
-      // children.forEach(child=>{
-      //   patch(child,el)
-      // })
       mountChildren(vnode.children, el, parentComponent);
     }
     // props
