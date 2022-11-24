@@ -4,9 +4,6 @@
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="8" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="9" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="5" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
@@ -16,14 +13,11 @@
                 <mxCell id="2" value="div" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="390" y="40" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="a" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="150" width="80" height="80" as="geometry"/>
-                </mxCell>
                 <mxCell id="5" value="b" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="410" y="150" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="460.25" y="150" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="c" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="530" y="150" width="80" height="80" as="geometry"/>
+                <mxCell id="6" value="a" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                    <mxGeometry x="365" y="150" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="" style="shape=flexArrow;endArrow=classic;html=1;width=34;endSize=12.67;strokeColor=#FF0000;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -34,11 +28,6 @@
                 <mxCell id="21" value="更新" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FF0000;" parent="11" vertex="1" connectable="0">
                     <mxGeometry x="-0.1067" y="7" relative="1" as="geometry">
                         <mxPoint y="8" as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="12" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="15" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="820" y="160" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="13" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="15" target="17" edge="1">
@@ -53,17 +42,14 @@
                 <mxCell id="15" value="div" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="880" y="40" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="a" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="770" y="160" width="80" height="80" as="geometry"/>
+                <mxCell id="17" value="c" style="whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FF3333;strokeColor=#FF3333;" parent="1" vertex="1">
+                    <mxGeometry x="1010" y="160" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="b" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="870" y="160" width="80" height="80" as="geometry"/>
+                <mxCell id="18" value="b" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="160" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="d" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="960" y="160" width="80" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="19" value="e" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="1050" y="160" width="80" height="80" as="geometry"/>
+                <mxCell id="19" value="a" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="160" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="更新逻辑" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;fontColor=#FF3333;" parent="1" vertex="1">
                     <mxGeometry x="20" y="50" width="170" height="120" as="geometry"/>
@@ -71,47 +57,47 @@
                 <mxCell id="24" value="具体更新" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;fontColor=#FF3333;" parent="1" vertex="1">
                     <mxGeometry x="20" y="330" width="170" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="（a b）c" style="rounded=0;whiteSpace=wrap;html=1;fontSize=21;fontColor=#FF3333;" parent="1" vertex="1">
+                <mxCell id="25" value="(a b)&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=21;fontColor=#FF3333;" parent="1" vertex="1">
                     <mxGeometry x="354" y="350" width="176" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="&amp;nbsp; &amp;nbsp;（a b）d e" style="rounded=0;whiteSpace=wrap;html=1;fontSize=21;fontColor=#FF3333;" parent="1" vertex="1">
+                <mxCell id="26" value="&amp;nbsp; &amp;nbsp;(a b)&amp;nbsp; &amp;nbsp; c d" style="rounded=0;whiteSpace=wrap;html=1;fontSize=21;fontColor=#FF3333;" parent="1" vertex="1">
                     <mxGeometry x="354" y="450" width="176" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=21;fontColor=#FF3333;fillColor=none;strokeColor=#007FFF;strokeWidth=4;" parent="1" vertex="1">
-                    <mxGeometry x="460" y="330" width="50" height="220" as="geometry"/>
+                    <mxGeometry x="460.25" y="330" width="50" height="220" as="geometry"/>
                 </mxCell>
                 <mxCell id="29" value="如何得出蓝色更新&lt;br&gt;部分的范围" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=21;fontColor=#0000FF;" parent="1" vertex="1">
                     <mxGeometry x="540" y="330" width="180" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="30" value="i" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=27;fontColor=#00CC66;" parent="1" vertex="1">
-                    <mxGeometry x="370" y="560" width="60" height="35" as="geometry"/>
+                    <mxGeometry x="330" y="550" width="60" height="35" as="geometry"/>
                 </mxCell>
                 <mxCell id="33" value="e1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=27;fontColor=#00CC66;" parent="1" vertex="1">
-                    <mxGeometry x="580" y="400" width="60" height="35" as="geometry"/>
+                    <mxGeometry x="540" y="405" width="60" height="35" as="geometry"/>
                 </mxCell>
                 <mxCell id="35" value="" style="shape=flexArrow;endArrow=classic;html=1;fontSize=27;fontColor=#00CC66;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.4;entryY=0.318;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="585" y="417.5" as="sourcePoint"/>
-                        <mxPoint x="485" y="399.96000000000004" as="targetPoint"/>
+                        <mxPoint x="560" y="420" as="sourcePoint"/>
+                        <mxPoint x="460" y="402.46000000000004" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="36" value="e2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=27;fontColor=#00CC66;" parent="1" vertex="1">
-                    <mxGeometry x="590" y="495" width="60" height="35" as="geometry"/>
+                    <mxGeometry x="540" y="515" width="60" height="35" as="geometry"/>
                 </mxCell>
                 <mxCell id="37" value="" style="shape=flexArrow;endArrow=classic;html=1;fontSize=27;fontColor=#00CC66;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.4;entryY=0.318;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="600" y="507.54" as="sourcePoint"/>
-                        <mxPoint x="500" y="490.00000000000006" as="targetPoint"/>
+                        <mxPoint x="600" y="515" as="sourcePoint"/>
+                        <mxPoint x="500" y="497.46000000000004" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="38" value="" style="shape=flexArrow;endArrow=classic;html=1;fontSize=27;fontColor=#00CC66;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="30" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="380" y="550" as="sourcePoint"/>
-                        <mxPoint x="430" y="500" as="targetPoint"/>
+                        <mxPoint x="400" y="500" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="39" value="我们通过光标i，对新旧数组进行每一项对比。&lt;br style=&quot;font-size: 18px&quot;&gt;当当前项相等时，则i++，光标向后移动，逐项比较。&lt;br&gt;当当前项不相等时，记录下当前i，退出循环。&lt;br&gt;此时i就是VDom更新范围的起点&lt;br&gt;&lt;br&gt;循环的条件是 i不能大于e1和e2" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#808080;spacingBottom=0;spacingTop=0;" parent="1" vertex="1">
-                    <mxGeometry x="290.5" y="595" width="399.5" height="140" as="geometry"/>
+                <mxCell id="39" value="1. 先执行左侧更新，光标走到c时，发现不一样，记录下c的下标，此时i=2&lt;br&gt;&lt;br&gt;2. 然后会去看右侧，先是e1和e2对比，（b，d）发现是不一样的，所以一开始就找到不相等的项，光标无移动，记录下当前项，e1=1，e2=3&lt;br&gt;&lt;br&gt;3. 那么就要总结当前的规律，什么是新的比旧的长，就是在当更新范围是i&amp;gt;e1 &amp;amp;&amp;amp; i&amp;lt;=e2时，就是新的比旧的长。&lt;br&gt;&lt;br&gt;4. 在这种情况下，就需要把新的[i]~新的[e2]全部创建出来，根据位置插入真实dom进行更新。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#808080;spacingBottom=0;spacingTop=0;" parent="1" vertex="1">
+                    <mxGeometry x="290.5" y="595" width="419.5" height="295" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value="i：从左侧开始比较的起点光标，&lt;br&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;最后记录下的是更新范围的起点&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontColor=#00CC66;" parent="1" vertex="1">
                     <mxGeometry x="40" y="420" width="270" height="50" as="geometry"/>
@@ -122,11 +108,17 @@
                 <mxCell id="42" value="e2：新VDom的长度" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontColor=#00CC66;" parent="1" vertex="1">
                     <mxGeometry x="40" y="520" width="180" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" value="总结" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;fontColor=#FF3333;" vertex="1" parent="1">
-                    <mxGeometry x="20" y="780" width="170" height="130" as="geometry"/>
+                <mxCell id="43" value="总结" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;fontColor=#FF3333;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="880" width="170" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="45" value="到这里，左侧对比已经结束，我们已经拿到了更新范围的起点。&lt;br&gt;范围终点的确定需要右侧对比去确定" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#808080;spacingBottom=0;spacingTop=0;" vertex="1" parent="1">
-                    <mxGeometry x="230" y="830" width="399.5" height="60" as="geometry"/>
+                <mxCell id="49" value="这类情况是在完成了左右两次的双端对比后，根据i，e1，e2的情况判断出的更新操作。&lt;br&gt;&lt;br&gt;当i&amp;gt;e1 &amp;amp;&amp;amp; i&amp;lt;=e2时，我们就可以判断出新的比旧的长，所以在实际的dom更新操作中，直接把新的[i~e2]创建出来，插入真实dom中。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#808080;spacingBottom=0;spacingTop=0;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="930" width="460" height="295" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="52" target="15">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="d" style="whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FF3333;strokeColor=#FF3333;" vertex="1" parent="1">
+                    <mxGeometry x="1110" y="160" width="80" height="80" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

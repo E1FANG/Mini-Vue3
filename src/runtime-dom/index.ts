@@ -20,9 +20,10 @@ function patchProp(el, key, prevVal, nextVal) {
   }
 }
 
-function insert(el, parent) {
+function insert(child, parent, anchor) {
   console.log("insert---------");
-  parent.append(el);
+  // anchor 锚点 表示child的插入位置
+  parent.insertBefore(child, anchor || null);
 }
 
 function remove(child) {
