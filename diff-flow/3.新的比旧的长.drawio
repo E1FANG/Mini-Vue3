@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="rtLPf_YucaRTqVIEzSHe" name="第 1 页">
-        <mxGraphModel dx="1187" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="707" dy="680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -114,10 +114,10 @@
                 <mxCell id="49" value="这类情况是在完成了左右两次的双端对比后，根据i，e1，e2的情况判断出的更新操作。&lt;br&gt;&lt;br&gt;当i&amp;gt;e1 &amp;amp;&amp;amp; i&amp;lt;=e2时，我们就可以判断出新的比旧的长，所以在实际的dom更新操作中，直接把新的[i~e2]创建出来，插入真实dom中。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#808080;spacingBottom=0;spacingTop=0;" parent="1" vertex="1">
                     <mxGeometry x="170" y="930" width="460" height="295" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="52" target="15">
+                <mxCell id="53" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="52" target="15" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="d" style="whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FF3333;strokeColor=#FF3333;" vertex="1" parent="1">
+                <mxCell id="52" value="d" style="whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FF3333;strokeColor=#FF3333;" parent="1" vertex="1">
                     <mxGeometry x="1110" y="160" width="80" height="80" as="geometry"/>
                 </mxCell>
             </root>
